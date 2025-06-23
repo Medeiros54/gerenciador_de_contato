@@ -9,8 +9,8 @@ def criar_tabela():
     cursor = conn.cursor()
     cursor.execute("""
                    CREATE TABLE IF NOT EXISTS contatos(
-                   id INTEGER PRIMORY KEY AUTOINCREMENT,
-                   nome TEXTO NOT NULL,
+                   id INTEGER PRIMARY KEY AUTOINCREMENT,
+                   nome TEXT NOT NULL,
                    telefone TEXT,
                    email TEXT,  )
     """)
@@ -21,7 +21,7 @@ def adicionar_contato(contato):
     conn = conectar()
     cursor = conn.cursor()
     cursor.execute(
-        "INSERT INTO contatos (nome , telefone , email) VALEUS(?, ?, ?)", 
+        "INSERT INTO contatos (nome , telefone , email) VALUES(?, ?, ?)"
         (contato.nome, contato.telefone, contato.email)
                    )  #necessita estar na mesma sequência do contato.py
     conn.commit()
